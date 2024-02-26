@@ -88,7 +88,7 @@ list.innerHTML = markup;
 
 list.addEventListener("click", (e) => {
   event.preventDefault();
-  if (e.target.nodeName !== "IMG") return;
+  if (e.target === e.currentTarget) return;
   const largeImage = e.target.dataset.source;
   const instance = basicLightbox.create(`
     <img src="${largeImage}" width="1112" height="640">
