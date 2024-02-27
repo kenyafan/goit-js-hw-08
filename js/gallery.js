@@ -87,7 +87,7 @@ const markup = images
 list.innerHTML = markup;
 
 list.addEventListener("click", (e) => {
-  event.preventDefault();
+  e.preventDefault();
   if (e.target === e.currentTarget) return;
   const largeImage = e.target.dataset.source;
   const instance = basicLightbox.create(`
