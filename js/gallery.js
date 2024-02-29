@@ -70,14 +70,13 @@ const markup = images
   .map(
     (image) =>
       `<li class="gallery-item">
-        <a class="gallery-link" href="large-image.jpg"">
+        <a class="gallery-link" href="${image.original}">
           <img
             class="gallery-image"
             src="${image.preview}"
             data-source="${image.original}"
             alt="${image.description}"
-            width="360"
-            height="200"
+
           />
         </a>
       </li>`
@@ -88,7 +87,7 @@ list.innerHTML = markup;
 
 list.addEventListener("click", (e) => {
   e.preventDefault();
-  if (e.target === e.currentTarget) return;
+  if (e.target.nodeName !== "IMG") return;
   const largeImage = e.target.dataset.source;
   const instance = basicLightbox.create(`
     <img src="${largeImage}" width="1112" height="640">
